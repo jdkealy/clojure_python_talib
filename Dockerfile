@@ -15,6 +15,8 @@ RUN apt-get install -y  \
 RUN apt-get install -y python-pip
 RUN pip install numpy
 RUN pip install TA-Lib
+WORKDIR /app
+COPY project.clj /app/project.clj
 RUN cd /app
 RUN lein deps
 CMD lein repl
