@@ -12,11 +12,12 @@ RUN apt-get install -y  \
     && ./configure --prefix=/usr \
     && make \
     && make install
-RUN apt-get install -y python-pip
-RUN pip install numpy
-RUN pip install TA-Lib
+RUN apt-get install -y python3-pip
+RUN pip3 install numpy
+RUN pip3 install TA-Lib
 WORKDIR /app
 COPY project.clj /app/project.clj
 RUN cd /app
 RUN lein deps
-CMD lein repl
+RUN apt-get -y install libxrender1 libxtst6 libxi6
+CMD /bin/bash

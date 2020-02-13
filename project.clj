@@ -12,6 +12,7 @@
                  [ring/ring-defaults "0.3.2"]
                  [clj-python/libpython-clj "1.36"]
                  [hiccup "1.0.5"]
+                 ;;[org.clojure/tools.nrepl "0.2.13"]
                  [yogthos/config "1.1.7"]
                  [org.clojure/clojurescript "1.10.597"
                   :scope "provided"]
@@ -81,7 +82,8 @@
 
 
 
-  :profiles {:dev {:repl-options {:init-ns clojure-python-talib.repl}
+  :profiles {:dev {:repl-options {:timeout 120000
+                                  :init-ns clojure-python-talib.repl}
                    :dependencies [[cider/piggieback "0.4.2"]
                                   [binaryage/devtools "0.9.11"]
                                   [ring/ring-mock "0.4.0"]

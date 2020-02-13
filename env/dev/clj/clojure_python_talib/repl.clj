@@ -1,10 +1,14 @@
 (ns clojure-python-talib.repl
+  (:require
+   [nrepl.server :as nrepl])
   (:use clojure-python-talib.handler
         figwheel-sidecar.repl-api
         ring.server.standalone
         [ring.middleware file-info file]))
 
 (defonce server (atom nil))
+
+(defonce nrepl-server (atom nil))
 
 (defn get-handler []
   ;; #'app expands to (var app) so that when we reload our code,
@@ -20,7 +24,12 @@
 (defn start-server
   "used for starting the server in development mode from REPL"
   [& [port]]
-  (let [port (if port (Integer/parseInt port) 3000)]
+  (let [port (if port (Integer/parseInt port) 3000)
+        nrepl-port 3005]
+    (println "starting nrepl on port " nrepl-port)
+    (nrepl/start-server :bind "0.0.0.0"
+                        :port nrepl-port)
+
     (reset! server
             (serve (get-handler)
                    {:port port
