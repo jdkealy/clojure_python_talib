@@ -1,90 +1,14 @@
-# clojure_python_talib
+## Python TAlib with Clojure Dockerfile 
 
-This is the clojure_python_talib project.
+This project is just a Dockerfile with a reagent-template, python, talib, numpy. 
 
-## Development mode
+Once you use the clojure REPL, nothing else compares. To be able to evaluate functions in your editor in an immutable way is something developers who use other languages just don't understand. 
 
-To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
+Copy/pasting your code into a python/Ruby repl is not at all a comparable experience. The immutability constructs of clojure make REPL-driven development possible mostly because `(defonce (atom {}))` allows you to re-evaluate your functions, but not re-evaluate your variables that you don't want reloaded between refreshes. e.g. if you have a variable that was X days of stock ticker data and you adjusted a funciton in the same file as the variable was defined, that's no problem with Clojure. 
 
-```
-lein figwheel
-```
+Now that you have your `(atom {})` of stock market data ready to play with, you want to use some of Clojure's amazing technical analysis libraries that are out there to get Bollinger Bands, Simple Moving Averages, etc, but oh... There are none. There are wrappers for Java technical analysis libraries that were last maintained 5 years ago, and Java interop in Clojure is... while a nice to have... not always that nice. 
 
-Figwheel will automatically push cljs changes to the browser. The server will be available at [http://localhost:3449](http://localhost:3449) once Figwheel starts up. 
+The technical analysis libraries in PYTHON on the other hand and best in class. So what do we do? 
 
-Figwheel also starts `nREPL` using the value of the `:nrepl-port` in the `:figwheel`
-config found in `project.clj`. By default the port is set to `7002`.
+Thankfully, there's a library `https://github.com/clj-python/libpython-clj` that allows us to import python libraries in Clojure. 
 
-The figwheel server can have unexpected behaviors in some situations such as when using
-websockets. In this case it's recommended to run a standalone instance of a web server as follows:
-
-```
-lein do clean, run
-```
-
-The application will now be available at [http://localhost:3000](http://localhost:3000).
-
-
-### Optional development tools
-
-Start the browser REPL:
-
-```
-$ lein repl
-```
-The Jetty server can be started by running:
-
-```clojure
-(start-server)
-```
-and stopped by running:
-```clojure
-(stop-server)
-```
-
-
-## Building for release
-
-```
-lein do clean, uberjar
-```
-
-## Deploying to Heroku
-
-Make sure you have [Git](http://git-scm.com/downloads) and [Heroku toolbelt](https://toolbelt.heroku.com/) installed, then simply follow the steps below.
-
-Optionally, test that your application runs locally with foreman by running.
-
-```
-foreman start
-```
-
-Now, you can initialize your git repo and commit your application.
-
-```
-git init
-git add .
-git commit -m "init"
-```
-create your app on Heroku
-
-```
-heroku create
-```
-
-optionally, create a database for the application
-
-```
-heroku addons:add heroku-postgresql
-```
-
-The connection settings can be found at your [Heroku dashboard](https://dashboard.heroku.com/apps/) under the add-ons for the app.
-
-deploy the application
-
-```
-git push heroku master
-```
-
-Your application should now be deployed to Heroku!
-For further instructions see the [official documentation](https://devcenter.heroku.com/articles/clojure).
