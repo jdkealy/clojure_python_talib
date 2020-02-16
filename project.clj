@@ -10,6 +10,9 @@
                  [reagent-utils "0.3.3"]
                  [ring "1.8.0"]
                  [ring/ring-defaults "0.3.2"]
+                 [org.clojure/data.csv "0.1.4"]
+                 [clj-time "0.15.2"]
+                 [net.mikera/core.matrix "0.62.0"]
                  [clj-python/libpython-clj "1.36"]
                  [hiccup "1.0.5"]
                  ;;[org.clojure/tools.nrepl "0.2.13"]
@@ -17,6 +20,7 @@
                  [org.clojure/clojurescript "1.10.597"
                   :scope "provided"]
                  [metosin/reitit "0.3.10"]
+                 [incanter "1.9.3"]
                  [pez/clerk "1.0.0"]
                  [venantius/accountant "0.2.5"
                   :exclusions [org.clojure/tools.reader]]]

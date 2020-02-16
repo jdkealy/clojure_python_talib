@@ -15,9 +15,11 @@ RUN apt-get install -y  \
 RUN apt-get install -y python3-pip
 RUN pip3 install numpy
 RUN pip3 install TA-Lib
+RUN pip3 install matplotlib
 WORKDIR /app
 COPY project.clj /app/project.clj
 RUN cd /app
 RUN lein deps
 RUN apt-get -y install libxrender1 libxtst6 libxi6
+RUN apt-get install -y feh
 CMD /bin/bash
